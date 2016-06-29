@@ -6,3 +6,4 @@
 /webOs-*/*
 .git/*
 /node_modules/*
+*.db
