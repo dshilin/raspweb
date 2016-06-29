@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СЫРОДЕЛИЕ.РФ - автоматическая камера созревания</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.css" />
+    <link rel="stylesheet" href="bootstrap-3.3.6/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+  </head>
+  <body onload="getCurTemp(), getCurHum()">
+    <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--a class="navbar-brand text-danger" href="/">ХОЗЯИН</a-->
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+            <ul class="nav navbar-nav navbar-left">
+				<li>&nbsp;</li>
+                <li><a href="#section1"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;Старт</a></li>
+                <li><a href="#section2"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Данные</a></li>
+                <li><a href="#section4"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp;Камера</a></li>
+                <li><a href="#section6"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Контакты</a></li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+	</nav>
+
+	<section class="container-fluid" id="section1">
+    <div class="v-center">
+        <h1 class="text-center roboto">СЫРОДЕЛИЕ.РФ<hr/></h1>
+        <h1 class="text-center lato  animate slideInDown"><a href="tel:88005055312" class="main-phone">8&nbsp;800&nbsp;505&nbsp;53&nbsp;12</a></h1>
+        <p class="text-center">
+            <br>
+            <a href="#section2" class="btn btn-danger btn-lg btn-huge" ><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Данные из камеры</a>
+        </p>
+        <p class="text-center">
+            <br>
+            <a href="#section4" class="btn btn-danger btn-lg btn-huge" ><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp;Задать параметры</a>
+        </p>
+    </div>
+</section>
+
+ <section class="container-fluid" id="section2" onload="getTempPar(), getHumPar()">
+	 
+<div class="row">
+    <div class="container animated slideInDown ">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default animate slideInDown">
+                            <div class="panel-heading">
+								<label>Температура:</label>
+								<div class="big"><span id="temp"></span>C&deg;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default slideInUp animate">
+                            <div class="panel-heading">
+								<label>Влажность:</label>
+								<div class="big"><span id="hum"></span>%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default slideInRight animate">
+                            <div class="panel-heading">
+							  <label>Актуальные данные</label>
+							  <p>Показания датчиков в реальном времени</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+
+    </div>
+    
+        </div>
+    <!--/container-->
+</section>
+
+<section id="section4">
+    <div class="container v-center">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Камера созревания</h1>
+                <div class="text-center">Установите необходимые вам значения температуры и влажности и включите устройство</div>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row form-group">
+					<form action="set_params.py" method="post">
+						<div class="col-md-4">
+							<label>Температура:</label>
+							<input type="number" class="form-control" id="temperature" name="temperature" min="5" max="16" step="0.5" value="" />
+						</div>
+						
+						<div class="col-md-4">
+							<label>Влажность:</label>
+							<input type="number" class="form-control" id="humidity" name="humidity" min="40" max="96" step="0.5"  value="" />
+						</div>
+						
+						 <div class="col-md-4">
+							<label>&nbsp;</label>
+							<input type="submit" class="btn btn-default form-control" value="Установить">
+						</div>
+					</form>
+				</div>
+				
+			</div>
+        </div>
+        <hr/>
+					<p class="text-center">
+						
+						<a href="index.html" class="btn btn-danger btn-lg btn-huge lato" >
+						&nbsp;&nbsp;&nbsp;<i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Включить&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					</p>
+
+    <br/>
+</section>
+
+<section class="container-fluid" id="section6">
+    <ul class="row list-unstyled">
+        <li class="col-md-6 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <h3 class="text-center">Мы всегда рады помочь!</h3>
+        </li>
+        <li class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1 text-center">
+            <a href="" class="center-block btn btn-default btn-lg btn-huge lato animate slideInRight">Напишите нам</a>
+        </li>
+    </ul>
+</section>
+
+<footer id="footer">
+    <div class="container">
+		<br />
+        <p class="text-center">Контролировать процесс можно со смартфона, планшета, ноутбука или стационарного компьютера.&nbsp;©2016</p>
+    </div>
+</footer>
+
+    <!--scripts loaded here-->
+    
+    <script src="jquery1.12.4/jquery.js"></script>
+    <script src="bootstrap-3.3.6/dist/js/bootstrap.js"></script>
+    
+    <script src="js/scripts.js"></script>
+	<script>
+	function getCurTemp() {
+		nocache = "&nocache=" + Math.random() * 1000000;
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() {
+			if (request.readyState === 4) {
+				if (request.status === 200) {
+					document.getElementById('temp').innerHTML = request.responseText;
+				} else {
+					alert('Something went wrong, status was ' + request.status);
+				}
+			}
+		};
+		request.open('POST', '/select_current_temp.py', true);
+		request.send(null);
+		setTimeout('getCurTemp()', 4000);
+		return false;  // Prevent the default button action
+		
+	}
+	
+	function getCurHum() {
+		nocache = "&nocache=" + Math.random() * 1000000;
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() {
+			if (request.readyState === 4) {
+				if (request.status === 200) {
+					document.getElementById('hum').innerHTML = request.responseText;
+				} else {
+					alert('Something went wrong, status was ' + request.status);
+				}
+			}
+		};
+		request.open('POST', '/select_current_hum.py', true);
+		request.send(null);
+		setTimeout('getCurHum()', 4000);
+		return false;  // Prevent the default button action
+		
+	}
+		
+		
+	$(document).ready(function getHumPar() {
+		nocache = "&nocache=" + Math.random() * 1000000;
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() {
+			if (request.readyState === 4) {
+				if (request.status === 200) {
+					document.getElementById('humidity').value = request.responseText;
+				} else {
+					alert('Something went wrong, status was ' + request.status);
+				}
+			}
+		};
+		request.open('POST', '/get_hum_par.py', true);
+		request.send(null);
+		return false;  // Prevent the default button action
+		
+	});
+		
+	$(document).ready(function() {
+		$(window).load(function() {
+			$(function getTempPar() {
+			nocache = "&nocache=" + Math.random() * 1000000;
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function() {
+				if (request.readyState === 4) {
+					if (request.status === 200) {
+						var x = request.responseText;
+						x = parseInt(x);
+						$('temperature').val('43.6');
+						
+					} else {
+						alert('Something went wrong, status was ' + request.status);
+					};
+				};
+			  };
+				request.open('POST', '/get_temp_par.py', true);
+				request.send(null);
+				return false;  // Prevent the default button action
+			});
+		});
+	});
+	</script>
+ 
+  </body>
+</html>

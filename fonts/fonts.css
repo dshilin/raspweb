@@ -1,0 +1,26 @@
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./roboto-v15-cyrillic-regular.eot'); /* IE9 Compat Modes */
+    src: local('Roboto'), local('Roboto-Regular'),
+    url('./roboto-v15-cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./roboto-v15-cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./roboto-v15-cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+    url('./roboto-v15-cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('./roboto-v15-cyrillic-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Loto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./Loto-Regular.eot'); /* IE9 Compat Modes */
+    src: local('Loto'), local('Loto-Regular'),
+    url('./Loto-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./Loto-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./Loto-Regular.woff') format('woff'), /* Modern Browsers */
+    url('./Loto-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('./Loto-Regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
