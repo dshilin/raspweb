@@ -16,7 +16,7 @@ with SHT1x(DATA_PIN, SCK_PIN, gpio_mode=GPIO.BCM) as sensor:
     humidity = sensor.read_humidity(temperature)
  
 def add_temps(temp, hum):
-	curs.execute("""UPDATE curr_temps SET tdate=date('now'), ttime=time('now'), temperature=(?), humidity=(?) where id=1""", (temp, hum))
+	curs.execute("""UPDATE curr_temp SET tdate=date('now'), ttime=time('now'), temperature=(?), humidity=(?)""", (temp, hum))
 
 add_temps(temperature, humidity)
       

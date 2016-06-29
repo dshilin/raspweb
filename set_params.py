@@ -16,7 +16,7 @@ conn=sqlite3.connect('./hozyin_database.db')
 
 curs=conn.cursor()
 
-curs.execute("""UPDATE camera_params SET tdate=date('now'), ttime=time('now'), temp_par=(?), hum_par=(?) where id=1""", (temp_par, hum_par))
+curs.execute("""UPDATE camera_params SET tdate=date('now'), ttime=time('now'), temp_par=(?), hum_par=(?)""", (temp_par, hum_par))
       
 conn.commit()
 

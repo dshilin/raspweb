@@ -214,7 +214,9 @@
 		request.onreadystatechange = function() {
 			if (request.readyState === 4) {
 				if (request.status === 200) {
-					document.getElementById('humidity').value = request.responseText;
+					var x = request.responseText;
+					x = parseFloat(x);
+					document.getElementById('humidity').value = x;
 				} else {
 					alert('Something went wrong, status was ' + request.status);
 				}
@@ -223,31 +225,26 @@
 		request.open('POST', '/get_hum_par.py', true);
 		request.send(null);
 		return false;  // Prevent the default button action
-		
 	});
 		
-	$(document).ready(function() {
-		$(window).load(function() {
-			$(function getTempPar() {
-			nocache = "&nocache=" + Math.random() * 1000000;
-			var request = new XMLHttpRequest();
-			request.onreadystatechange = function() {
-				if (request.readyState === 4) {
-					if (request.status === 200) {
-						var x = request.responseText;
-						x = parseInt(x);
-						$('temperature').val('43.6');
-						
-					} else {
-						alert('Something went wrong, status was ' + request.status);
-					};
-				};
-			  };
-				request.open('POST', '/get_temp_par.py', true);
-				request.send(null);
-				return false;  // Prevent the default button action
-			});
-		});
+	$(document).ready(function getTempPar() {
+		nocache = "&nocache=" + Math.random() * 1000000;
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() {
+			if (request.readyState === 4) {
+				if (request.status === 200) {
+					var x = request.responseText;
+					x = parseFloat(x);
+					document.getElementById('temperature').value = x;
+					
+				} else {
+					alert('Something went wrong, status was ' + request.status);
+				}
+			}
+		  };
+		request.open('POST', '/get_temp_par.py', true);
+		request.send(null);
+		return false;  // Prevent the default button action
 	});
 	</script>
  
