@@ -19,8 +19,7 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar"></span
             </button>
             <!--a class="navbar-brand text-danger" href="/">ХОЗЯИН</a-->
         </div>
@@ -30,7 +29,6 @@
                 <li><a href="#section1"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;Старт</a></li>
                 <li><a href="#section2"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Данные</a></li>
                 <li><a href="#section4"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp;Камера</a></li>
-                <li><a href="#section6"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Контакты</a></li>
                 <li>&nbsp;</li>
             </ul>
         </div>
@@ -107,27 +105,27 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Камера созревания</h1>
-                <div class="text-center">Установите необходимые вам значения температуры и влажности и включите устройство</div>
+                <div id="cam-param" class="text-center">Установите необходимые вам значения температуры и влажности и включите устройство</div>
                 <hr>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="row form-group">
-					<form action="set_params.py" method="post">
+					<form id="camera-params">
 						<div class="col-md-4">
 							<label>Температура:</label>
-							<input type="number" class="form-control" id="temperature" name="temperature" min="5" max="16" step="0.5" value="" />
+							<input type="number" class="form-control" id="temperature" name="temperature" min="5" max="16" step="0.5"/>
 						</div>
 						
 						<div class="col-md-4">
 							<label>Влажность:</label>
-							<input type="number" class="form-control" id="humidity" name="humidity" min="40" max="96" step="0.5"  value="" />
+							<input type="number" class="form-control" id="humidity" name="humidity" min="40" max="96" step="0.5"/>
 						</div>
 						
 						 <div class="col-md-4">
 							<label>&nbsp;</label>
-							<input type="submit" class="btn btn-default form-control" value="Установить">
+							<input type="submit" id="submit-params" class="btn btn-default form-control" value="Установить">
 						</div>
 					</form>
 				</div>
@@ -135,25 +133,15 @@
 			</div>
         </div>
         <hr/>
-					<p class="text-center">
-						
-						<a href="index.html" class="btn btn-danger btn-lg btn-huge lato" >
-						&nbsp;&nbsp;&nbsp;<i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Включить&nbsp;&nbsp;&nbsp;&nbsp;</a>
-					</p>
+        
+		<p class="text-center">
+			<a href="index.html" class="btn btn-danger btn-lg btn-huge lato" >
+			&nbsp;&nbsp;&nbsp;<i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Включить&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		</p>
 
     <br/>
 </section>
 
-<section class="container-fluid" id="section6">
-    <ul class="row list-unstyled">
-        <li class="col-md-6 col-md-offset-1 col-xs-10 col-xs-offset-1">
-            <h3 class="text-center">Мы всегда рады помочь!</h3>
-        </li>
-        <li class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1 text-center">
-            <a href="" class="center-block btn btn-default btn-lg btn-huge lato animate slideInRight">Напишите нам</a>
-        </li>
-    </ul>
-</section>
 
 <footer id="footer">
     <div class="container">
@@ -177,7 +165,7 @@
 				if (request.status === 200) {
 					document.getElementById('temp').innerHTML = request.responseText;
 				} else {
-					alert('Something went wrong, status was ' + request.status);
+					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
 				}
 			}
 		};
@@ -196,16 +184,17 @@
 				if (request.status === 200) {
 					document.getElementById('hum').innerHTML = request.responseText;
 				} else {
-					alert('Something went wrong, status was ' + request.status);
+					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
 				}
 			}
 		};
 		request.open('POST', '/select_current_hum.py', true);
 		request.send(null);
 		setTimeout('getCurHum()', 4000);
-		return false;  // Prevent the default button action
+		return false;
 		
 	}
+	
 		
 		
 	$(document).ready(function getHumPar() {
@@ -218,13 +207,13 @@
 					x = parseFloat(x);
 					document.getElementById('humidity').value = x;
 				} else {
-					alert('Something went wrong, status was ' + request.status);
+					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
 				}
 			}
 		};
 		request.open('POST', '/get_hum_par.py', true);
 		request.send(null);
-		return false;  // Prevent the default button action
+		return false;
 	});
 		
 	$(document).ready(function getTempPar() {
@@ -238,13 +227,23 @@
 					document.getElementById('temperature').value = x;
 					
 				} else {
-					alert('Something went wrong, status was ' + request.status);
+					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
 				}
 			}
 		  };
 		request.open('POST', '/get_temp_par.py', true);
 		request.send(null);
-		return false;  // Prevent the default button action
+		return false;
+	});
+	
+	
+	$(document).ready(function() {
+		$("#camera-params").submit(function (Event) {
+			Event.preventDefault()
+			var temperature = $("#temperature").val();
+			var humidity = $("#humidity").val();
+				$.get("set_params.py", { "temperature" : temperature, "humidity" : humidity } ).done(function(html) { document.getElementById("cam-param").innerHTML = "Значения успешно установлены, ваше устройство готово к работе";});
+		});
 	});
 	</script>
  
