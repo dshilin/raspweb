@@ -1,6 +1,6 @@
 html,body {
 	height:100%;
-    color:#444;
+    color:#fff;
     font-family: 'Lato', sans-serif;
     
 }
@@ -20,8 +20,19 @@ a:hover {
     text-decoration: none;
 }
 
+#process  p{
+	width: 250px;;
+}
 
+.off {
+    background-color:#AA7F39;
+    color: #fff;
+}
 
+ .off:hover {
+    background-color:#47361A;
+	color: #fff ;
+ }
 .btn,.well,.panel {
     border-radius:0;
 }
@@ -158,26 +169,16 @@ section {
 }
   
 #section1, #section3 {
-	background-color: rgba(0,0,0,0.3);
-	color:#fff;
+	background-color: #FFB01B;
 }
   
 #section4 {
-	background-color: #F6F6F6;
-	color:#444;
-	
+	background-color: #FFC11B;
+	color: #473B10;
 }
   
 #section2 {
-	background-color: #fff;
-}
-
-#section3 {
-	background-color: rgba(0,0,0,0.9);
-}
-
-#section5 {
-	background-color: #fff;
+	background-color: #2E6EEC;
 }
 
 #section6 {

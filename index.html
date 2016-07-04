@@ -105,7 +105,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Камера созревания</h1>
-                <div id="cam-param" class="text-center">Установите необходимые вам значения температуры и влажности и включите устройство</div>
+                <div class="text-center">Установите необходимые вам значения температуры и влажности и включите устройство</div>
+                <div id="cam-param" class="text-center"></div>
                 <hr>
             </div>
         </div>
@@ -133,13 +134,14 @@
 			</div>
         </div>
         <hr/>
-        
-		<p class="text-center">
-			<a href="index.html" class="btn btn-danger btn-lg btn-huge lato" >
-			&nbsp;&nbsp;&nbsp;<i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Включить&nbsp;&nbsp;&nbsp;&nbsp;</a>
-		</p>
-
-    <br/>
+			<div id="process" class="text-center">
+				<p class="btn btn-danger btn-lg btn-huge lato" onclick="processOn">
+					<i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Включить
+				</p>
+				<p style="display: none"  class="btn btn-lg btn-huge lato off" onclick="processOff">
+					<i class="fa fa-spinner fa-spin fa-fw"></i>&nbsp;Выключить
+				</p>
+			</div>
 </section>
 
 
@@ -195,8 +197,17 @@
 		
 	}
 	
-		
-		
+//	function toggle_visibility(id) {
+//		var e = document.getElementById(id);
+//		if( e.style.display == 'block' )
+//			e.style.display = 'none';
+//		else
+//			e.style.display = 'block';
+//	}
+	$("#process").click(function() {
+		$("#process p").toggle();
+	});
+	
 	$(document).ready(function getHumPar() {
 		nocache = "&nocache=" + Math.random() * 1000000;
 		var request = new XMLHttpRequest();
@@ -245,6 +256,8 @@
 				$.get("set_params.py", { "temperature" : temperature, "humidity" : humidity } ).done(function(html) { document.getElementById("cam-param").innerHTML = "Значения успешно установлены, ваше устройство готово к работе";});
 		});
 	});
+	
+	$()
 	</script>
  
   </body>
