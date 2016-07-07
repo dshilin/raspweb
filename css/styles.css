@@ -1,7 +1,8 @@
 html,body {
-	height:100%;
-    color:#fff;
+    height:100%;
+    color: #202020;
     font-family: 'Lato', sans-serif;
+    background-color:#fff;
     
 }
 
@@ -10,29 +11,30 @@ html,body {
         font-size:68px;
     }
 }
-
-a {
-    color:#999;
-}
-
-a:hover {
-    color:#111;
-    text-decoration: none;
-}
+/**/
+/*a {*/
+/*    color:#150873;*/
+/*}*/
+/**/
+/*a:hover {*/
+/*    color:#3F92D2;*/
+/*    text-decoration: none;*/
+/*}*/
 
 #process  p{
 	width: 250px;;
 }
 
 .off {
-    background-color:#AA7F39;
-    color: #fff;
+    background-color:#6666CC;
+    color: #eeeee6;
 }
 
  .off:hover {
-    background-color:#47361A;
-	color: #fff ;
+    background-color:#202020;
+	color: #eeeee6 ;
  }
+
 .btn,.well,.panel {
     border-radius:0;
 }
@@ -55,6 +57,7 @@ a.main-phone {
 
 a.main-phone:hover {
     color:#fff;
+    text-decoration:none;
 }
 
 .btn-huge {
@@ -79,22 +82,23 @@ a.main-phone:hover {
 
 
 .navbar-trans {
-	background-color:#2b2b2b;
+	background-color:#6666CC;
     border-width:0;
+    border-color:#fff;
 }
 
 .navbar-trans .navbar-brand, .navbar-trans >.container-fluid .navbar-brand {
     padding: 14px;
-    color:#f44d3c;
+/*    color:#f44d3c;*/
 }
 
 .navbar-trans li>a:focus, .navbar-trans li.active>a {
 	background-color:#f44d3c;
-	color:#512A22;
+	color:#eeeee6;
 }
 
 .navbar-trans li>a:hover {
-	background-color:#d43f3a;;
+	background-color:#d43f3a;
 	color:#fff;
 }
 
@@ -168,48 +172,32 @@ section {
     min-width:520px;
 }
   
-#section1, #section3 {
-	background-color: #FFB01B;
+#section1 {
+	background-color: #9999FF;
 }
-  
+
 #section4 {
-	background-color: #FFC11B;
-	color: #473B10;
+    background-color: #CCCCFF;
+/*	color: #473B10;*/
 }
   
 #section2 {
-	background-color: #2E6EEC;
-}
-
-#section6 {
-    background-color: #eee;
-	min-height:130px;
-	padding-top:40px;
-	padding-bottom:40px;
-}
-
-#section7 {
-	background-color: #f44d3c;
-	color: #f6f6f6;
-	min-height:130px;
-	padding-top:40px;
-	padding-bottom:40px;
+	background-color: #9999CC;
 }
 
 footer {
-	background-color:#2b2b2b;
-    color:#ddd;
+    background-color:#6666CC;
     min-height:100px;
     padding:20px;
 }
 
-footer .nav>li>a {
+footer a {
     padding: 3px;
-    color: #f44d3c;
+    color:#eeeee6;
 }
 
-footer .nav>li>a:hover {
-    background-color:transparent;
+footer a:hover {
 	color:#fff;
+    text-decoration: none;
 }
 
