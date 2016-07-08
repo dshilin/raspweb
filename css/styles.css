@@ -26,7 +26,7 @@ html,body {
 }
 
 .off {
-    background-color:#6666CC;
+    background-color:#ed7063;
     color: #eeeee6;
 }
 
@@ -39,12 +39,16 @@ html,body {
     border-radius:0;
 }
 
+h2 {
+    font-size:52px;
+}
+
 .panel-heading {
 	min-height:260px;
 }
 
 .btn-danger {
-    background-color:#f44d3c;
+    background-color:#898989;
 }
 
 .text-danger, a.text-danger {
@@ -82,7 +86,7 @@ a.main-phone:hover {
 
 
 .navbar-trans {
-	background-color:#6666CC;
+	background-color:#ed7063;
     border-width:0;
     border-color:#fff;
 }
@@ -93,12 +97,12 @@ a.main-phone:hover {
 }
 
 .navbar-trans li>a:focus, .navbar-trans li.active>a {
-	background-color:#f44d3c;
+	background-color:#898989;
 	color:#eeeee6;
 }
 
 .navbar-trans li>a:hover {
-	background-color:#d43f3a;
+	background-color:#8989A9;
 	color:#fff;
 }
 
@@ -173,7 +177,7 @@ section {
 }
   
 #section1 {
-	background-color: #9999FF;
+	background-color: #8989D9;
 }
 
 #section4 {
@@ -186,7 +190,7 @@ section {
 }
 
 footer {
-    background-color:#6666CC;
+    background-color:#ed7063;
     min-height:100px;
     padding:20px;
 }
