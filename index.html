@@ -26,9 +26,9 @@
         <div class="navbar-collapse collapse" id="navbar-collapsible">
             <ul class="nav navbar-nav navbar-left">
 				<li>&nbsp;</li>
-                <li><a href="#section1"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;Старт</a></li>
+                <li><a href="#section1"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Старт</a></li>
                 <li><a href="#section2"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Данные</a></li>
-                <li><a href="#section4"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp;Камера</a></li>
+                <li><a href="#section4"><i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Камера</a></li>
                 <li>&nbsp;</li>
             </ul>
         </div>
@@ -37,7 +37,7 @@
 
 <section class="container-fluid" id="section1">
     <div class="v-center">
-        <h1 class="text-center roboto">СЫРОДЕЛИЕ.РФ<hr/></h1>
+        <h2 class="text-center roboto">СЫРОДЕЛИЕ.РФ<hr/></h2>
         <h1 class="text-center lato  animate slideInDown"><a href="tel:88005055312" class="main-phone">8&nbsp;800&nbsp;505&nbsp;53&nbsp;12</a></h1>
         <p class="text-center">
             <br>
@@ -45,17 +45,24 @@
         </p>
         <p class="text-center">
             <br>
-            <a href="#section4" class="btn btn-danger btn-lg btn-huge" ><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp;Задать параметры</a>
+            <a href="#section4" class="btn btn-danger btn-lg btn-huge" ><i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Задать параметры</a>
         </p>
     </div>
 </section>
 
 <section class="container-fluid" id="section2" onload="getTempPar(), getHumPar()">
-	 
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Актуальные данные</h1>
+            <div class="text-center">Показания датчиков в реальном времени</div>
+            <div id="cam-param" class="text-center"></div>
+            <br>
+        </div>
+    </div>
 <div class="row">
-    <div class="container animated slideInDown ">
+    <div class="container animate slideInDown ">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="panel panel-default animate slideInDown">
@@ -67,7 +74,7 @@
                     </div>
                 </div>
               </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="panel panel-default slideInUp animate">
@@ -79,21 +86,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="panel panel-default slideInRight animate">
-                            <div class="panel-heading">
-							  <label>Актуальные данные</label>
-							  <p>Показания датчиков в реальном времени</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-
     </div>
     
         </div>
