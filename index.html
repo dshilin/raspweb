@@ -127,10 +127,10 @@
         </div>
         <hr/>
 			<div id="process" class="text-center">
-				<p class="btn btn-danger btn-lg btn-huge lato" onclick="processOn">
+				<p id="processon" class="btn btn-danger btn-lg btn-huge lato" >
 					<i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Включить
 				</p>
-				<p style="display: none"  class="btn btn-lg btn-huge lato off" onclick="processOff">
+				<p id="processoff" style="display: none"  class="btn btn-lg btn-huge lato off" >
 					<i class="fa fa-spinner fa-spin fa-fw"></i>&nbsp;Выключить
 				</p>
 			</div>
@@ -239,8 +239,14 @@
 		return false;
 	});
 	
+	$("#processon").click(function processOn() {
+		$.get("processon.py");
+	});
 	
-
+	$("#processoff").click(function processOff() {
+		$.get("processoff.py");
+	});
+	
 	$("#camera-params").submit(function (Event) {
 		Event.preventDefault()
 		var temperature = $("#temperature").val();

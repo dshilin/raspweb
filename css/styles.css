@@ -10,6 +10,10 @@ html,body {
     h1 {
         font-size:68px;
     }
+    
+    h2 {
+        font-size:54px;
+    }
 }
 /**/
 /*a {*/
@@ -37,10 +41,6 @@ html,body {
 
 .btn,.well,.panel {
     border-radius:0;
-}
-
-h2 {
-    font-size:52px;
 }
 
 .panel-heading {
