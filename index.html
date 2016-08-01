@@ -108,7 +108,7 @@
 					<form id="camera-params">
 						<div class="col-md-4">
 							<label>Температура:</label>
-							<input type="number" class="form-control" id="temperature" name="temperature" min="5" max="16" step="0.5"/>
+							<input type="number" class="form-control" id="temperature" name="temperature" min="5" max="30" step="0.5"/>
 						</div>
 						
 						<div class="col-md-4">
@@ -151,133 +151,7 @@
     
     <script src="js/scripts.js"></script>
 	<script>
-	function getCurTemp() {
-		nocache = "&nocache=" + Math.random() * 1000000;
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState === 4) {
-				if (request.status === 200) {
-					document.getElementById('temp').innerHTML = request.responseText;
-				} else {
-					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
-				}
-			}
-		};
-		request.open('POST', '/select_current_temp.py', true);
-		request.send(null);
-		setTimeout('getCurTemp()', 4000);
-		return false;  // Prevent the default button action
-		
-	}
-	
-	function getCurHum() {
-		nocache = "&nocache=" + Math.random() * 1000000;
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState === 4) {
-				if (request.status === 200) {
-					document.getElementById('hum').innerHTML = request.responseText;
-				} else {
-					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
-				}
-			}
-		};
-		request.open('POST', '/select_current_hum.py', true);
-		request.send(null);
-		setTimeout('getCurHum()', 4000);
-		return false;
-		
-	}
 
-	
-//	function toggle_visibility(id) {
-//		var e = document.getElementById(id);
-//		if( e.style.display == 'block' )
-//			e.style.display = 'none';
-//		else
-//			e.style.display = 'block';
-//	}
-	$("#process p").click(function() {
-		$("#process p").toggle();
-	});
-	
-	$(document).ready(function getHumPar() {
-		nocache = "&nocache=" + Math.random() * 1000000;
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState === 4) {
-				if (request.status === 200) {
-					var x = request.responseText;
-					x = parseFloat(x);
-					document.getElementById('humidity').value = x;
-				} else {
-					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
-				}
-			}
-		};
-		request.open('POST', '/get_hum_par.py', true);
-		request.send(null);
-		return false;
-	});
-		
-	$(document).ready(function getTempPar() {
-		nocache = "&nocache=" + Math.random() * 1000000;
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState === 4) {
-				if (request.status === 200) {
-					var x = request.responseText;
-					x = parseFloat(x);
-					document.getElementById('temperature').value = x;
-					
-				} else {
-					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
-				}
-			}
-		  };
-		request.open('POST', '/get_temp_par.py', true);
-		request.send(null);
-		return false;
-	});
-		
-	$(document).ready(function isEnabled() {
-		nocache = "&nocache=" + Math.random() * 1000000;
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = function() {
-			if (request.readyState === 4) {
-				if (request.status === 200) {
-					var x = request.responseText;
-					x = parseInt(x);
-					if (x === 1)
-						$("#process p").toggle();
-				} else {
-					alert("Что то пошло не так, попробуйте перезагрузить страницу.");
-				}
-			}
-		  };
-		request.open('POST', '/is_enabled.py', true);
-		request.send(null);
-		return false;
-	});	
-	$("#processon").click(function processOn() {
-		$.get("processon.py");
-	});
-	
-	$("#processoff").click(function processOff() {
-		$.get("processoff.py");
-	});
-	
-	$("#camera-params").submit(function (Event) {
-		Event.preventDefault()
-		var temperature = $("#temperature").val();
-		var humidity = $("#humidity").val();
-			$.get("set_params.py", { "temperature" : temperature, "humidity" : humidity } ).done(function(html) { document.getElementById("cam-param").innerHTML = ("Значения успешно установлены, ваше устройство готово к работе");});
-	});
-
-	
-	$("#submit-params").click(function() {
-		$("#cam-param").fadeOut( 6000 );
-	});
 	</script>
  
   </body>

@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import sqlite3
 
+def temp_par():
+        conn = sqlite3.connect('/home/pi/webOs/hozyin_database.db')
+        cursor = conn.execute("SELECT temp_par from CAMERA_PARAMS;")
+        for row in cursor:
+                 tp=row[0]
+        conn.close()
+        return tp
 
-print "Content-type: text/html\n";
-	
-conn = sqlite3.connect('./hozyin_database.db')
-
-cursor = conn.execute("SELECT temp_par from CAMERA_PARAMS;")
-for row in cursor:
-	print row[0];
-
-conn.close()
+if __name__ == '__main__':
+        print "Content-type: text/html\n"
+        print temp_par()
+else:
+        temp_par()

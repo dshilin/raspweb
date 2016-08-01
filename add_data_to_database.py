@@ -11,7 +11,7 @@ conn=sqlite3.connect('/home/pi/webOs/hozyin_database.db')
 
 curs=conn.cursor()
 
-with SHT1x(DATA_PIN, SCK_PIN, gpio_mode=GPIO.BCM) as sensor:
+with SHT1x(DATA_PIN, SCK_PIN, gpio_mode=GPIO.BCM, resolution='Low') as sensor:
     temperature = sensor.read_temperature()
     humidity = sensor.read_humidity(temperature)
  

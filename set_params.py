@@ -4,7 +4,7 @@
 import cgi, cgitb
 import sqlite3
 
-print "Content-type: text/html\n";
+print "Content-type: text/html\n"
 
 form = cgi.FieldStorage()
 

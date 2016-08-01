@@ -6,5 +6,5 @@ TRUNCATE TABLE CURR_TEMP;
 TRUNCATE TABLE CAMERA_PARAMS;
 
 INSERT INTO CURR_TEMP values(date('now'), time('now'), 25, 42);
-INSERT INTO CAMERA_PARAMS values(date('now'), time('now'), 10, 90,false);
+INSERT INTO CAMERA_PARAMS values(date('now'), time('now'), 10, 90,0);
 COMMIT;
