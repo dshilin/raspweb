@@ -16,15 +16,19 @@ def main():
                 ch=curr_hum()
                 tp=temp_par()
                 hp=hum_par()
-                if ct>=tp:
-                        if not r.IS_REFRIGERATOR():
-                                r.ON_REFRIGERATOR()
+                if ct>tp:
+                        if r.IS_REFRIGERATOR():
+                        	pass     
+			else:
+				r.ON_REFRIGERATOR()
                 else:
                         if r.IS_REFRIGERATOR():
                                 r.OFF_REFRIGERATOR()
-                if ch<=hp:
-                        if not r.IS_HUMIDIFIER():
-                                r.ON_HUMIDIFIER()
+                if ch<hp:
+                        if r.IS_HUMIDIFIER():
+                        	pass        
+			else:
+				r.ON_HUMIDIFIER()
                 else:
                         if r.IS_HUMIDIFIER():
                                 r.OFF_HUMIDIFIER()

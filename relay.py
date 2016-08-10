@@ -12,76 +12,107 @@ class Relay():
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def ON_REFRIGERATOR(self):
-        print 'ON REFRIGERATOR'
+        print ('ON REFRIGERATOR')
         self.DEVICE_REG_DATA &= ~(0x1<<0)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
     def ON_HUMIDIFIER(self):
-        print 'ON HUMIDIFIER'
+        print ('ON HUMIDIFIER')
         self.DEVICE_REG_DATA &= ~(0x1<<1)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
     def ON_AERATION(self):
-        print 'ON AERATION'
+        print ('ON AERATION')
         self.DEVICE_REG_DATA &= ~(0x1<<2)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
     def ON_HEATER(self):
-        print 'ON HEATER'
+        print ('ON HEATER')
         self.DEVICE_REG_DATA &= ~(0x1<<3)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def OFF_REFRIGERATOR(self):
-        print 'OFF REFRIGERATOR'
+        print ('OFF REFRIGERATOR')
         self.DEVICE_REG_DATA |= (0x1<<0)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def OFF_HUMIDIFIER(self):
-        print 'OFF HUMIDIFIER'
+        print ('OFF HUMIDIFIER')
         self.DEVICE_REG_DATA |= (0x1<<1)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def OFF_AERATION(self):
-        print 'OFF AERATION'
+        print ('OFF AERATION')
         self.DEVICE_REG_DATA |= (0x1<<2)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def OFF_HEATER(self):
-        print 'OFF HEATER'
+        print ('OFF HEATER')
         self.DEVICE_REG_DATA |= (0x1<<3)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def ALLON(self):
-        print 'ALLON'
+        print ('ALLON')
         self.DEVICE_REG_DATA &= ~(0xf<<0)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def ALLOFF(self):
-        print 'ALLOFF'
+        print ('ALLOFF')
         self.DEVICE_REG_DATA |= (0xf<<0)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def IS_REFRIGERATOR(self):
         #print bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)
         if (bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)==254):
-            print 'REFRIGERATOR is ON'
+            print ('REFRIGERATOR is ON')
             return True
         elif (bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)==252):
-            print 'REFRIGERATOR is ON'
+            print ('REFRIGERATOR is ON')
             return True
         else:
-            print 'REFRIGERATOR is OFF'
+            print ('REFRIGERATOR is OFF')
             return False
 
     def IS_HUMIDIFIER(self):
         #print bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)
         if (bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)==253):
-            print 'HUMIDIFIER is ON'
+            print ('HUMIDIFIER is ON')
             return True
         elif (bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)==252):
-            print 'HUMIDIFIER is ON'
+            print ('HUMIDIFIER is ON')
             return True
         else:
-            print 'HUMIDIFIER is OFF'
+            print ('HUMIDIFIER is OFF')
             return False
 
-##
-##if __name__=="__main__":
-##        
+
+if __name__=="__main__":
+    
+    r=Relay()
+    
+    while True:
+                from is_enabled import is_enabled
+                while is_enabled():
+                        from select_current_temp import curr_temp
+                        from select_current_hum import curr_hum
+                        from get_temp_par import temp_par
+                        from get_hum_par import hum_par
+                        ct=curr_temp()
+                        ch=curr_hum()
+                        tp=temp_par()
+                        hp=hum_par()
+                        if ct>tp:
+                                if r.IS_REFRIGERATOR():
+                                        pass     
+                                else:
+                                        r.ON_REFRIGERATOR()
+                        else:
+                                if r.IS_REFRIGERATOR():
+                                        r.OFF_REFRIGERATOR()
+                        if ch<hp:
+                                if r.IS_HUMIDIFIER():
+                                        pass        
+                                else:
+                                        r.ON_HUMIDIFIER()
+                        else:
+                                if r.IS_HUMIDIFIER():
+                                        r.OFF_HUMIDIFIER()
+                r.ALLOFF()
+        

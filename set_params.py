@@ -12,7 +12,7 @@ temp_par = form.getvalue('temperature')
 
 hum_par  = form.getvalue('humidity')
 
-conn=sqlite3.connect('./hozyin_database.db')
+conn=sqlite3.connect('/home/pi/webOs/database.db')
 
 curs=conn.cursor()
 

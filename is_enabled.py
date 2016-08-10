@@ -3,7 +3,7 @@
 import sqlite3
 
 def is_enabled():	
-        conn = sqlite3.connect("/home/pi/webOs/hozyin_database.db")
+        conn = sqlite3.connect("/home/pi/webOs/database.db")
         cursor = conn.execute("SELECT is_enabled from CAMERA_PARAMS;")
         for row in cursor:
                 en = row[0]      

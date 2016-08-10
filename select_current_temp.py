@@ -4,7 +4,7 @@
 import sqlite3
 
 def curr_temp():	
-        conn = sqlite3.connect('/home/pi/webOs/hozyin_database.db')
+        conn = sqlite3.connect('/home/pi/webOs/database.db')
         cursor = conn.execute("SELECT temperature from CURR_TEMP;")
         for row in cursor:
                  ct=row[0];
@@ -12,7 +12,7 @@ def curr_temp():
         return ct
         
 if __name__ == '__main__':
-        print "Content-type: text/html\n"
-        print curr_temp()
+        print ("Content-type: text/html\n")
+        print (curr_temp())
 else:
         curr_temp()

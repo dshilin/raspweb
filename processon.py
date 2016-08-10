@@ -7,7 +7,7 @@ print "Content-type: text/html\n"
 
 print "1"
 
-conn=sqlite3.connect("./hozyin_database.db")
+conn=sqlite3.connect('/home/pi/webOs/database.db')
 
 curs=conn.cursor()
 
@@ -17,8 +17,5 @@ conn.commit()
 
 conn.close()
 
-from ma import main
-main()
-
-
-
+#from ma import main
+#main()
