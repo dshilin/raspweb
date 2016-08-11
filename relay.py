@@ -136,7 +136,7 @@ if __name__=="__main__":
             if ct>tp:
                     if r.IS_REFRIGERATOR():
                             pass     
-                    else:
+                    elif ct>tp+0.5:
                             r.ON_REFRIGERATOR()
             else:
                     if r.IS_REFRIGERATOR():
@@ -144,7 +144,7 @@ if __name__=="__main__":
             if ch<hp:
                     if r.IS_HUMIDIFIER():
                             pass        
-                    else:
+                    elif ch<hp-0.5:
                             r.ON_HUMIDIFIER()
             else:
                     if r.IS_HUMIDIFIER():
