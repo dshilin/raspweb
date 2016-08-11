@@ -17,5 +17,3 @@ conn.commit()
 
 conn.close()
 
-#from ma import main
-#main()
