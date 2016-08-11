@@ -6,15 +6,15 @@ import sqlite3
 
 form = cgi.FieldStorage()
 
-temp_par = form.getvalue('temperature')
+astart = form.getvalue('astart')
 
-hum_par  = form.getvalue('humidity')
+astop  = form.getvalue('astop')
 
 conn=sqlite3.connect('/home/pi/webOs/database.db')
 
 curs=conn.cursor()
 
-curs.execute("""UPDATE camera_params SET tdate=date('now'), ttime=time('now'), temp_par=(?), hum_par=(?)""", (temp_par, hum_par))
+curs.execute("""UPDATE camera_params SET tdate=date('now'), ttime=time('now'), aer_start=(?), aer_stop=(?)""", (astart, astop))
       
 conn.commit()
 

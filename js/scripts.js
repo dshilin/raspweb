@@ -110,6 +110,44 @@ $(document).ready(function getTempPar() {
 	request.send(null);
 	return false;
 });
+
+$(document).ready(function getAerStartPar() {
+	nocache = "&nocache=" + Math.random() * 1000000;
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() {
+		if (request.readyState === 4) {
+			if (request.status === 200) {
+				var x = request.responseText;
+				x = parseFloat(x);
+				document.getElementById('aer-start').value = x;
+			} else {
+				alert("Что то пошло не так, попробуйте перезагрузить страницу.");
+			}
+		}
+	};
+	request.open('POST', '/get_aer_start_par.py', true);
+	request.send(null);
+	return false;
+});
+
+$(document).ready(function getAerStopPar() {
+	nocache = "&nocache=" + Math.random() * 1000000;
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() {
+		if (request.readyState === 4) {
+			if (request.status === 200) {
+				var x = request.responseText;
+				x = parseFloat(x);
+				document.getElementById('aer-stop').value = x;
+			} else {
+				alert("Что то пошло не так, попробуйте перезагрузить страницу.");
+			}
+		}
+	};
+	request.open('POST', '/get_aer_stop_par.py', true);
+	request.send(null);
+	return false;
+});
 	
 $(document).ready(function isEnabled() {
 	nocache = "&nocache=" + Math.random() * 1000000;
@@ -142,10 +180,13 @@ $("#camera-params").submit(function (Event) {
 	Event.preventDefault()
 	var temperature = $("#temperature").val();
 	var humidity = $("#humidity").val();
-		$.get("set_params.py", { "temperature" : temperature, "humidity" : humidity } ).done(function(html) { document.getElementById("cam-param").innerHTML = ("Значения успешно установлены, ваше устройство готово к работе");$("#cam-param").fadeOut( 6000 );});
+		$.get("set_params.py", { "temperature" : temperature, "humidity" : humidity });
 });
 
 
-$("#submit-params").click(function() {
-	$("#cam-param").fadeOut( 6000 );
+$("#aeration-params").submit(function (Event) {
+	Event.preventDefault()
+	var astart = $("#aer-start").val();
+	var astop = $("#aer-stop").val();
+		$.get("set_aer_params.py", { "astart" : astart, "astop" : astop });
 });

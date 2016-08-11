@@ -50,7 +50,7 @@
     </div>
 </section>
 
-<section class="container-fluid" id="section2" onload="getTempPar(), getHumPar()">
+<section class="container-fluid" id="section2" onload="getTempPar(), getHumPar();getAerStartPar();getAerStopPar()">
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">Актуальные данные</h1>
@@ -97,7 +97,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Камера созревания</h1>
-                <div class="text-center">Установите необходимые вам значения температуры и влажности и включите устройство</div>
+                <div class="text-center">Установите необходимые вам параметры температуры, влажности, а так же работы вентилятора и включите устройство</div>
                 <div id="cam-param" class="text-center"></div>
                 <hr>
             </div>
@@ -118,7 +118,24 @@
 						
 						 <div class="col-md-4">
 							<label>&nbsp;</label>
-							<input type="submit" id="submit-params" class="btn btn-default form-control" value="Установить">
+							<input type="submit" id="submit-params" class="btn btn-default form-control" value="Установить параметры температуры и влажности">
+						</div>
+					</form>
+					
+					<form id="aeration-params">
+						<div class="col-md-4">
+							<label>Время работы вентилятора в секундах:</label>
+							<input type="number" class="form-control" id="aer-start" name="aer-start" min="30" max="3600" step="10"/>
+						</div>
+						
+						<div class="col-md-4">
+							<label>Время простоя вентилятора в секундах:</label>
+							<input type="number" class="form-control" id="aer-stop" name="aer-stop" min="30" max="3600" step="10"/>
+						</div>
+						
+						 <div class="col-md-4">
+							<label>&nbsp;</label>
+							<input type="submit" id="submit-aer-params" class="btn btn-default form-control" value="Установить параметры вентилятора">
 						</div>
 					</form>
 				</div>
