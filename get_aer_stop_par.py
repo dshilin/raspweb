@@ -4,7 +4,7 @@
 import sqlite3
 
 def aer_stop_par():
-        conn = sqlite3.connect('/home/pi/webOs/database.db')
+        conn = sqlite3.connect('/home/baas/webOs/database.db')
         cursor = conn.execute("SELECT aer_stop from CAMERA_PARAMS;")
         for row in cursor:
                  ao=row[0];

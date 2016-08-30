@@ -6,11 +6,11 @@ import sqlite3
 
 form = cgi.FieldStorage()
 
-temp_par = form.getvalue('temperature')
+temp_par = form.getvalue("temperature")
 
-hum_par  = form.getvalue('humidity')
+hum_par  = form.getvalue("humidity")
 
-conn=sqlite3.connect('/home/pi/webOs/database.db')
+conn=sqlite3.connect("/home/baas/webOs/database.db")
 
 curs=conn.cursor()
 

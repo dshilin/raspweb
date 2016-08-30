@@ -4,11 +4,11 @@ import smbus
 import time
 
 bus = smbus.SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
-                
+
 class Relay():
-    
+
     global bus
-    
+
     def __init__(self):
         self.DEVICE_ADDRESS = 0x20      #7 bit address (will be left shifted to add the read write bit)
         self.DEVICE_REG_MODE1 = 0x06
@@ -20,12 +20,12 @@ class Relay():
         self.DEVICE_REG_DATA &= ~(0x1<<0)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
         time.sleep(2.0)
-        
+
     def ON_HUMIDIFIER(self):
         print ('ON HUMIDIFIER')
         self.DEVICE_REG_DATA &= ~(0x1<<1)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
-        
+
     def ON_AERATION(self):
         print ('ON AERATION')
         self.DEVICE_REG_DATA &= ~(0x1<<2)
@@ -40,7 +40,7 @@ class Relay():
         self.DEVICE_REG_DATA |= (0x1<<0)
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
         time.sleep(2.0)
-        
+
     def OFF_HUMIDIFIER(self):
         print ('OFF HUMIDIFIER')
         self.DEVICE_REG_DATA |= (0x1<<1)
@@ -67,7 +67,6 @@ class Relay():
         bus.write_byte_data(self.DEVICE_ADDRESS, self.DEVICE_REG_MODE1, self.DEVICE_REG_DATA)
 
     def IS_REFRIGERATOR(self):
-        #print bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)
         if (bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)==254):
             print ('REFRIGERATOR is ON')
             return True
@@ -79,7 +78,6 @@ class Relay():
             return False
 
     def IS_HUMIDIFIER(self):
-        #print bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)
         if (bus.read_byte_data(self.DEVICE_ADDRESS,self.DEVICE_REG_MODE1)==253):
             print ('HUMIDIFIER is ON')
             return True
@@ -91,9 +89,9 @@ class Relay():
             return False
 
 class AerThread(Thread):
-    
+
     global r
-       
+
     def __init__(self):
        super(AerThread,self).__init__()
        return
@@ -108,17 +106,17 @@ class AerThread(Thread):
                 self.aer_start()
                 time.sleep(aer_start_par())
                 self.aer_stop()
-            
+
     def aer_stop(self):
         global r
         r.OFF_AERATION()
         return
-    
+
     def aer_start(self):
         global r
         r.ON_AERATION()
         return
-       
+
 if __name__=="__main__":
 
     r=Relay()    
@@ -135,7 +133,7 @@ if __name__=="__main__":
             hp=hum_par()
             if ct>tp:
                     if r.IS_REFRIGERATOR():
-                            pass     
+                            pass
                     elif ct>tp+0.5:
                             r.ON_REFRIGERATOR()
             else:
@@ -143,7 +141,7 @@ if __name__=="__main__":
                             r.OFF_REFRIGERATOR()
             if ch<hp:
                     if r.IS_HUMIDIFIER():
-                            pass        
+                            pass
                     elif ch<hp-0.5:
                             r.ON_HUMIDIFIER()
             else:

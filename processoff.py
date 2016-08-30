@@ -7,7 +7,7 @@ print "Content-type: text/html\n"
 
 print '0'
         
-conn=sqlite3.connect('/home/pi/webOs/database.db')
+conn=sqlite3.connect('/home/baas/webOs/database.db')
 
 curs=conn.cursor()
 

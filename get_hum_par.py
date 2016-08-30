@@ -4,7 +4,7 @@
 import sqlite3
 
 def hum_par():
-        conn = sqlite3.connect('/home/pi/webOs/database.db')
+        conn = sqlite3.connect('/home/baas/webOs/database.db')
         cursor = conn.execute("SELECT hum_par from CAMERA_PARAMS;")
         for row in cursor:
                  hp=row[0];

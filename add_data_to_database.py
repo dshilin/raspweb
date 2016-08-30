@@ -7,7 +7,7 @@ from pi_sht1x import SHT1x
 DATA_PIN = 24
 SCK_PIN = 23
 
-conn=sqlite3.connect('/home/pi/webOs/database.db')
+conn=sqlite3.connect('/home/baas/webOs/database.db')
 
 curs=conn.cursor()
 

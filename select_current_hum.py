@@ -3,7 +3,7 @@
 import sqlite3
 
 def curr_hum():
-        conn = sqlite3.connect('/home/pi/webOs/database.db')
+        conn = sqlite3.connect("/home/baas/webOs/database.db")
         cursor = conn.execute("SELECT humidity from CURR_TEMP;")
         for row in cursor:
                 ch=row[0];

@@ -4,7 +4,7 @@
 import sqlite3
 
 def temp_par():
-        conn = sqlite3.connect('/home/pi/webOs/database.db')
+        conn = sqlite3.connect('/home/baas/webOs/database.db')
         cursor = conn.execute("SELECT temp_par from CAMERA_PARAMS;")
         for row in cursor:
                  tp=row[0]
